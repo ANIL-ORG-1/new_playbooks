@@ -1,0 +1,13 @@
+---
+- name: Create a directory and copy the /etc/passwd file into it
+  hosts: all
+  tasks:
+   - name: Create a directory
+     file:
+      name: /tmp/dir1
+      state: directory
+   - name: Copy the /etc/passwd file
+     copy:
+      src: /etc/passwd
+      dest: /tmp/dir1
+...
