@@ -1,0 +1,10 @@
+---
+- name: Create file using host variables
+  hosts: 172.31.89.244
+  tasks:
+   - name: Creating  file
+     file:
+      name: "{{a}}"
+      state: "{{b}}"
+      owner: "{{c}}"
+      mode: "{{d}}"

@@ -1,0 +1,12 @@
+---
+- name: Creating users uisng host scope varibales
+  hosts: webserver
+  tasks:
+   - name: User creation
+     user:
+      name: "{{a}}"
+      password: "{{b}}"
+      home: "{{c}}"
+      uid: "{{d}}"
+      shell: "{{e}}"
+...

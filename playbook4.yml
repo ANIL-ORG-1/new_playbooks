@@ -1,6 +1,6 @@
 ---
 - name: Configuring tomcat
-  hosts: all
+  hosts: webserver
   tasks:
    - name: Install tomcat8
      apt:
