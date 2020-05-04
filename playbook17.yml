@@ -1,0 +1,16 @@
+---
+- name: Check if a dir is present and if not create a file
+  hosts: all
+  tasks:
+   - name: Check fir dir
+     stat:
+      path: /home/ubuntu/d1
+     register: a
+   - name: Display output of the above module
+     debug:
+      var: a
+   - name: Create file "d1" if dir "d1" is not present
+     file:
+      name: /home/ubuntu/d1
+      state: touch
+     when: a.stat.exists == false

@@ -1,0 +1,13 @@
+---
+- name: Configuring tomcat using child playbooks
+  hosts: all
+  tasks:
+   - name: Call multiple child playbooks for tomcat8 configuration
+     include: "{{item}}"
+     with_items:
+      - install.yml
+      - copy_tomcatusers.yml
+      - replace.yml
+      - restart.yml
+      - pause.yml
+      - check_url_response.yml 

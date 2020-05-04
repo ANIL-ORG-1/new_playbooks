@@ -1,0 +1,5 @@
+---
+- name: Wait for x time
+  pause:
+   minutes: 2
+...

@@ -1,0 +1,7 @@
+---
+- name: User creation using child playbooks
+  hosts: all
+  tasks:
+   - name: call child playbook
+     include: playbook18.yml
+

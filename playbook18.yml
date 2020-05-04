@@ -1,0 +1,9 @@
+---
+- name: User creation
+  user:
+   name: Smaran
+   password: intelliqit
+   uid: 8090
+   home: /home/Smaran
+...
+
