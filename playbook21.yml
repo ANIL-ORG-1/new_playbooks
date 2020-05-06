@@ -1,0 +1,34 @@
+---
+- name: Setup of Jenkins for CI-CD environment
+  hosts: jenkinsserver
+  tasks:
+   - name: Install s/w for jenkins
+     apt:
+      name: "{{item.a}}"
+      state: "{{item.b}}"
+      update_cache: "{{item.c}}"
+     with_items:
+      - {a: openjdk-8-jdk,b: present,c: yes}
+      - {a: git,b: present,c: no}
+      - {a: maven,b: present,c: no}
+   - name: Download jenkins.war fi;e
+     get_url:
+      url: http://mirrors.jenkins.io/war-stable/latest/jenkins.war
+      dest: /home/ubuntu
+- name: Setup tomcat on QA and ProdServers
+  hosts: servers
+  tasks:
+   - name: Install tomcat8  and tomcat8-admin
+     apt:
+      name: "{{item.a}}"
+      state: present
+      update_cache: "{{item.b}}"
+     with_items:
+      - {a: tomcat8,b: yes}
+      - {a: tomcat8-admin,b: no}
+
+   - name: Copy tomcat-users.xml file
+     copy:
+      src: /home/ubuntu/tomcat-users.xml
+      dest: /etc/tomcat8
+
