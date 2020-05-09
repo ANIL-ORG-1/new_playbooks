@@ -1,0 +1,15 @@
+---
+- name: Setup of Docker for Docker-Ansible integrations
+  hosts: all
+  tasks:
+   - name: Install python-pip
+     apt:
+      name: python-pip
+      state: present
+      update_cache: yes
+   - name: Install docker-py and downlaod docker and install it
+     shell: "{{item}}"
+     with_items:
+      - pip install docker-py
+      - curl -fsSL https://get.docker.com -o get-docker.sh
+      - sh get-docker.sh

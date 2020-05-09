@@ -1,0 +1,24 @@
+---
+- name: Upload docker images in dockerhub
+  hosts: all
+  tasks:
+   - name: Login into docker hub
+     docker_login:
+      username: sai
+      password: intelliqit
+      email: sai@gmail.com
+
+- name: Push a customised docker image from server1
+  hosts: 172.31.31.15
+  tasks:
+   - name: Push customised centos image
+     docker_image:
+      name: intelliqit/centos_9_may
+      push: yes
+- name: Push a customised docker image on server2
+  hosts: 172.31.26.41
+  tasks:
+   - name: Push a customised ubuntu image
+     docker_image:
+      name: intelliqit/ubuntu_9_may
+      push: yes

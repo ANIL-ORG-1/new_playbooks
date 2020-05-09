@@ -1,0 +1,12 @@
+---
+- name: Create a centos container and launch interactive terminal,mount volume
+  hosts: all
+  tasks:
+   - name: Create centos
+     docker_container:
+      image: centos
+      name: mycentos
+      interactive: yes
+      tty: yes
+      volumes:
+       - /data
